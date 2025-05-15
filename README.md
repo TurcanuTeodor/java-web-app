@@ -12,8 +12,6 @@ O aplicație Java simplă care gestionează clienți, conturi și tranzacții fo
 - **Conectare la PostgreSQL**: Utilizare Hibernate pentru maparea obiect-relatională (ORM).
 - **Configurație Spring MVC**: Structură modulară cu servicii, controlere și modele.
 
-## Structura Proiectului
-app/ ├── pom.xml # Fișierul de configurare Maven ├── src/ │ ├── main/ │ │ ├── java/ │ │ │ └── ro/ │ │ │ ├── app/ │ │ │ │ ├── controller/ # Controlerele Spring MVC │ │ │ │ ├── service/ # Servicii pentru logica aplicației │ │ │ │ ├── model/ # Entități JPA │ │ │ │ └── config/ # Configurații Spring │ │ ├── resources/ │ │ │ └── application.properties # Configurația aplicației │ │ └── webapp/ │ │ └── WEB-INF/ # Fișiere de configurare Spring MVC │ ├── test/ │ │ └── java/ # Teste unitare ├── target/ # Fișiere generate de Maven └── sql/ # Scripturi SQL pentru baze de date
 
 ## Endpoint-uri REST
 
@@ -30,6 +28,8 @@ app/ ├── pom.xml # Fișierul de configurare Maven ├── src/ │ ├�
 - `POST /accounts` - Adaugă un cont nou.
 - `PUT /accounts` - Actualizează un cont existent.
 - `DELETE /accounts/{id}` - Șterge un cont după ID.
+- `GET /accounts/count` - Obține numărul total de conturi.
+- `GET /accounts/total-balance` - Obține soldul total al conturilor.
 
 ### Tranzacții
 - `GET /transactions` - Obține lista tuturor tranzacțiilor.
@@ -37,13 +37,10 @@ app/ ├── pom.xml # Fișierul de configurare Maven ├── src/ │ ├�
 - `POST /transactions` - Adaugă o tranzacție nouă.
 - `PUT /transactions` - Actualizează o tranzacție existentă.
 - `DELETE /transactions/{id}` - Șterge o tranzacție după ID.
+- `GET /transactions/count` - Obține numărul total de tranzacții.
+- `GET /transactions/grouped-by-type` - Obține tranzacțiile grupate pe tip.
+- `GET /transactions/above-amount` - Obține tranzacțiile care depășesc o anumită sumă.
 
-## Configurație
-
-### Baza de date
-Aplicația folosește PostgreSQL. Configurația bazei de date se află în fișierul `application.properties`:
-
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/cibernetica?currentSchema=public
-spring.datasource.username=postgres
-spring.datasource.password=Tglstmai8
+### Rapoarte
+- `GET /transactions/summary` - Obține un rezumat al tranzacțiilor.
+- `GET /transactions/summary-by-date` - Obține un rezumat al tranzacțiilor pe un interval de timp.
