@@ -10,6 +10,7 @@ O aplicație Java simplă care gestionează clienți, conturi și tranzacții fo
 - **Rapoarte**: Generare rapoarte despre tranzacții și clienți.
 - **Interfață JSON**: Expunerea datelor prin endpoint-uri REST.
 - **Conectare la PostgreSQL**: Utilizare Hibernate pentru maparea obiect-relatională (ORM).
+- **Gestionare resurse JDBC**: Listener pentru eliberarea driverelor JDBC.
 - **Configurație Spring MVC**: Structură modulară cu servicii, controlere și modele.
 
 
