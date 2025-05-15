@@ -1,0 +1,145 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ro.app</groupId>
+    <artifactId>cibernetica-app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- Spring Framework Core -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.0.12</version>
+        </dependency>
+
+        <!-- Spring Web MVC -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>6.0.12</version>
+        </dependency>
+
+        <!-- Spring ORM -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>6.0.12</version>
+        </dependency>
+
+        <!-- Hibernate Core -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.2.6.Final</version>
+        </dependency>
+
+        <!-- Jakarta Persistence API -->
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <!-- PostgreSQL JDBC Driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.6.0</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- HikariCP for Connection Pooling -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>5.0.1</version>
+        </dependency>
+
+        <!-- Jackson for JSON -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+
+        <!-- Add dependencies here -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.15.2</version> <!-- Use the latest version if available -->
+        </dependency>
+
+        <!-- Hibernate Validator (for validation) -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.0.Final</version>
+        </dependency>
+
+        <!-- Jakarta Validation API -->
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>cibernetica-app</finalName>
+        <plugins>
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <!-- WAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <!-- Tomcat Maven Plugin for Deployment -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat10-maven-plugin</artifactId>
+                <version>1.0.0-M1</version>
+                <configuration>
+                    <url>http://localhost:8080/manager/text</url>
+                    <server>TomcatServer</server>
+                    <path>/cibernetica-app</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
